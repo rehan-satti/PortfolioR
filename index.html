@@ -1,0 +1,770 @@
+
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rehan Satti — Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* -------------------------
+     Theme variables (Dark/Professional Tech Look)
+     ------------------------- */
+  :root{
+    --bg:#0f172a; 
+    --header-footer-bg: #1e293b; 
+    --glass: rgba(255,255,255,0.08);
+    --blue-600: #0b66cc;
+    --blue-500: #1677d2;
+    --blue-400: #3aa0ff;
+    --muted:#a0aec0; 
+    --text:#e2e8f0; 
+    --header-text: #ffffff;
+    --card-bg: rgba(25, 33, 58, 0.96); 
+    --accent-gradient: linear-gradient(90deg,var(--blue-500),var(--blue-400));
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+
+    min-height:100vh;
+    font-family: Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: var(--bg); 
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-osx-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+
+  /* particle canvas behind everything */
+  canvas#particles { position:fixed; inset:0; z-index:-2; display:block; }
+
+  /* HEADER & NAVBAR */
+  header.navbar {
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 18px; gap:12px;
+    background: var(--header-footer-bg); 
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+  }
+  .brand { display:flex; align-items:center; gap:10px; cursor:default; }
+  .logo {
+    width:44px; height:44px; border-radius:10px;
+    background: var(--accent-gradient);
+    display:grid; place-items:center; color:#fff; font-weight:800;
+
+    box-shadow:0 8px 26px rgba(11,102,204,0.3);
+    flex-shrink:0;
+  }
+  .brand .name { font-weight:700; color:var(--header-text); font-size:1.2rem; line-height:1; } 
+  
+  /* Navbar (Menu): Permanently hidden (mobile-first approach enforced) */
+  nav.main-nav { display:none !important; }
+
+  /* Search Box (Right side, large/modern) */
+  .search {
+    display:flex; align-items:center; gap:8px; margin-left:16px;
+    background: rgba(255,255,255,0.05); 
+    padding:8px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+  .search input{
+    width:240px; max-width:40vw; min-width:140px;
+    padding:6px 8px; border-radius:6px; border:0;
+    background: transparent; color:var(--header-text); outline:none;
+    font-weight:500;
+  }
+  
+  /* Hamburger button (≡) is always visible on ALL devices */
+  .hambtn { display:block !important; background:transparent; border:0; color:var(--header-text); font-size:1.6rem; cursor:pointer; }
+
+  /* hero */
+  .hero { padding:110px 18px 40px; text-align:center; }
+  h1.title { 
+    font-size:2.6rem; margin:0; 
+    background: var(--accent-gradient);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    letter-spacing:0.2px; font-weight:800;
+  }
+  .typing { color:var(--blue-400); margin-top:10px; min-height:26px; font-weight:700; } 
+  
+  /* flat modern buttons (added unified hover effect) */
+  .btn {
+    display:inline-block; padding:10px 16px; border-radius:999px; font-weight:700; cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1); text-decoration:none; color:var(--text);
+    background: rgba(255,255,255,0.08); 
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  /* Unified Hover Effect */
+  .btn:not(.primary):hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
+
+  .btn.primary{
+    background: var(--accent-gradient); color:#fff; border:1px solid var(--blue-500);
+
+    box-shadow: 0 10px 25px rgba(11,102,204,0.4);
+  }
+  .btn.primary:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(11,102,204,0.5); }
+  
+  .btn.view, .btn.download{ 
+    background: var(--blue-600); color:#fff; border:1px solid var(--blue-600);
+    padding:8px 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  /* Restore specific hover for view/download buttons */
+  .btn.view:hover, .btn.download:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(11,102,204,0.3);
+  }
+
+  /* central container */
+  .wrap { max-width:1100px; margin:0 auto; padding:28px 18px; }
+
+  /* sections/cards */
+  .card {
+    background: var(--card-bg); 
+    border-radius:16px; padding:24px; 
+    border:1px solid rgba(255,255,255,0.08); 
+    box-shadow: 0 14px 45px rgba(0, 0, 0, 0.4); 
+    margin-bottom:20px;
+    transition: transform 0.6s cubic-bezier(.2,.9,.2,1), box-shadow 0.6s ease, opacity 0.6s ease;
+    opacity:0; transform: translateY(40px); 
+
+  }
+  .card.show { opacity:1; transform: none; }
+
+  /* Cards: Enforce single column on ALL devices (Fixed Layout) */
+  .two { 
+    display:grid; 
+    grid-template-columns:1fr; /* Always one column */
+    gap:20px; 
+    align-items:start; 
+  }
+
+  /* SKILLS: Circular Progress Style */
+  .skills-grid{ display:flex; gap:35px; flex-wrap:wrap; align-items:center; }
+  .skill { width:140px; text-align:center; }
+  .progress {
+    --size:120px;
+    width:var(--size); height:var(--size); border-radius:50%;
+    background: conic-gradient(var(--blue-600) 0deg, rgba(255,255,255,0.08) 0deg);
+    box-shadow: 0 8px 28px rgba(11,102,204,0.25);
+    display:grid; place-items:center;
+    position: relative;
+    margin: 0 auto;
+  }
+  .progress .inner{ 
+    background: var(--card-bg); border:1px solid rgba(255,255,255,0.06); 
+    width: 90px; height: 90px; border-radius: 50%;
+    display:grid; place-items:center;
+    font-weight: 700;
+
+  }
+
+  /* SERVICES: Enforce single column on ALL devices (Fixed Layout) */
+  .services { 
+    display:grid; 
+    grid-template-columns:1fr; /* Always one column */
+    gap:16px; 
+  }
+  .service {
+    padding:18px; border-radius:14px; 
+    border:1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.05); 
+    transition: transform .2s ease, box-shadow .2s ease;
+    opacity:0; transform: translateY(30px); 
+    display:flex; gap:15px; align-items:flex-start;
+  }
+  .service.show { opacity:1; transform: none; }
+  .service:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 16px 40px rgba(11,102,204,0.2); 
+    border-color: rgba(11,102,204,0.5);
+  }
+
+  /* About container (fixed on desktop, reverses on mobile for better flow) */
+  .about-container {
+    display:flex; gap:30px; align-items:center; flex-wrap:wrap;
+    flex-direction: row; 
+  }
+  .about-figure { 
+
+    width: clamp(150px, 40vw, 220px); 
+    height: clamp(150px, 40vw, 220px); 
+    flex-shrink:0; 
+    margin-left:auto;
+    border-radius:50%; 
+    overflow:hidden;
+    border: 3px solid var(--blue-400); 
+    box-shadow: 0 0 15px rgba(58,160,255,0.6); 
+  }
+.about-figure img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Contact Link Hover Effect */
+  .contact-list a { 
+    color: var(--text); /* Default color */
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .contact-list a:hover {
+    color: var(--blue-400); /* Accent color on hover */
+  }
+
+  /* FOOTER */
+  footer{
+    padding:20px 18px; margin-top:30px;
+    background: var(--header-footer-bg); 
+    color: #dbefff;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width:600px){
+
+    .about-container { flex-direction: column-reverse; } 
+    .about-figure { margin: 20px auto 0; }
+    footer { justify-content:center; text-align:center; flex-direction:column; gap:15px; }
+  }
+
+  /* Ensure anchor offset space for fixed header */
+  main, .wrap { scroll-margin-top: 92px; }
+  @media (max-width:600px){
+    .remove-h { display: none;}
+  }
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<header class="navbar">
+  <div class="brand">
+    <div class="logo">RS</div>
+    <div>
+      <div class="name">Rehan Satti</div> 
+    </div>
+  </div>
+
+  <nav class="main-nav" aria-label="Main navigation"></nav>
+
+  <div style="display:flex; align-items:center; gap:10px;">
+    <div class="search" role="search">
+      <form onsubmit="return doSearch(event)" style="display:flex; align-items:center;">
+        <i class="fas fa-search" style="color:var(--muted); font-size:0.9rem;"></i>
+        <input id="searchInput" placeholder="Search section..." aria-label="Search section">
+
+      </form>
+    </div>
+    <button class="hambtn" aria-label="Open menu" onclick="openMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<div id="mobileMenu" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:80; display:none;">
+  <div style="width:300px; height:100%; background:var(--header-footer-bg); padding:18px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+      <div style="display:flex; gap:10px; align-items:center;"><div class="logo" style="width:36px;height:36px">RS</div><div style="font-weight:700; color:white;">Rehan Satti</div></div>
+      <button onclick="closeMobileMenu()" style="background:transparent;border:0;color:var(--muted); font-size:18px; cursor:pointer;">✕</button>
+    </div>
+    <nav style="display:flex; flex-direction:column; gap:12px;">
+      <a href="#home" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-home"></i> Home</a>
+      <a href="#about" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-user"></i> About</a>
+      <a href="#education" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-
+
+graduation-cap"></i> Education</a>
+      <a href="#skills" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-code"></i> Skills</a>
+      <a href="#services" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-cogs"></i> Services</a>
+      <a href="#certificates" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-certificate"></i> Certs</a>
+      <a href="#projects" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-project-diagram"></i> Projects</a>
+      <a href="#contact" onclick="closeMobileMenu()" style="color:white; padding:10px;"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main id="home" class="hero" style="padding-top:92px;">
+  <h1 class="title fade-up" id="heroTitle">Rehan Mufaz</h1>
+  <div class="typing fade-up" id="typing"></div>
+  <div class="hero-ctas fade-up" style="margin-top:14px;">
+    <a class="btn primary" href="Resume.pdf" >Download CV</a>
+    <a class="btn ghost" href="#projects">View Projects</a>
+  </div>
+</main>
+
+<div class="wrap">
+  <section id="about">
+    <div class="section-title fade-up">
+      <h2>About</h2>
+      <!-- <div class="muted">Professional summary</div> -->
+    </div>
+
+    <div class="card fade-up" id="aboutCard">
+      <div class="about-container">
+        <div class="about-text">
+          <p style="margin:0; line-height:1.6;">
+            I am <strong>Rehan Mufaz</strong>, a Web Developer, Cyber Security Expert, and AI Specialist. I design and build secure, modern web applications and integrate intelligent features where they provide real value. I focus on usability, maintainable code, and strong security practices so clients get reliable, production-ready solutions.
+          </p>
+          <div style="margin-top:10px;" class="label-small muted">I communicate clearly, deliver on time, and make sure every project is tested and documented.</div>
+        </div>
+ <figure class="about-figure fade-up" aria-hidden="true" style="margin:0;">
+          <img src="profile.jpg" alt="Rehan Satti Profile Picture">
+        </figure>
+        <!-- <figure class="about-figure fade-up" aria-hidden="true" style="margin:0;">
+          <img src="Pro 23.jpg"Rehan Satti Profile Picture>
+        </figure> -->
+        <h1 class="remove-h" style="color: #ADD8E6;  padding-left: 155px; font-weight: bold; font-size: 3em; text-decoration: none;">VIEW MY WORK</h1>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-title fade-up">
+      <h2>Education</h2>
+      <div class="muted">Academic background</div>
+    </div>
+
+    <div class="two"> 
+      <div class="card fade-up">
+        <ul style="margin:0; padding-left:18px; line-height:1.9;">
+          <li><strong>Matric (2022)</strong> — Computer Science — Rawalpindi Board</li>
+          <li><strong>Intermediate (2024)</strong> — Computer Science — Federal Board</li>
+          <li><strong>BSCS (In Progress)</strong> — National University of Pakistan</li>
+        </ul>
+      </div>
+<h2 style="   font-size:1.4rem; font-weight:800;  color: var(- white-500)">Achievements</h2>
+      <div class="card fade-up" id="certificates">
+        <h3 style="margin-top:0; font-weight:800; color:transparent;
+              background: var(--accent-gradient);
+              -webkit-background-clip:text; background-clip:text;">Certificates</h3>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:8px;">
+          
+          <div style="min-width:190px;">
+            <div class="label-small">NAVTTC</div>
+            <div class="muted">Web Development</div>
+            <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+
+              <button class="btn view" onclick="openAsset('Certimage.jpg')">View</button>
+              <button class="btn download" onclick="downloadAsset('CertImage.jpg')">Download</button>
+            </div>
+          </div>
+
+          <div style="min-width:190px;">
+            <div class="label-small">Google</div>
+            <div class="muted">AI Course — Coursera</div>
+            <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+              <button class="btn view" onclick="openAsset('AI course.pdf')">View</button>
+              <button class="btn download" onclick="downloadAsset('AI course.pdf')">Download</button>
+            </div>
+          </div>
+
+          <div style="min-width:190px;">
+            <div class="label-small">Google</div>
+            <div class="muted">Cyber Security — Coursera</div>
+            <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+              <button class="btn view" onclick="openAsset('cyber.pdf')">View</button>
+              <button class="btn download" onclick="downloadAsset('cyber.pdf')">Download</button>
+            </div>
+          </div>
+           <div style="min-width:190px;">
+            <div class="label-small">Meta</div>
+            <div class="muted">Python — Coursera (In Progress)</div>
+            <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+              <button class="btn view" onclick="openAsset('cyber.pdf')" disabled>View</button>
+              <button class="btn download" onclick="downloadAsset('cyber.pdf')" disabled>Download</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-title fade-up">
+      <h2>Skills</h2>
+      <div class="muted">Proficiency levels</div>
+    </div>
+
+    <div class="two"> 
+      <div class="card fade-up">
+        <div class="skills-grid">
+          <div class="skill fade-up">
+            <div class="progress" id="p-web"></div>
+            <label>Web Development</label>
+          </div>
+
+          <div class="skill fade-up">
+            <div class="progress" id="p-ai"></div>
+            <label>AI</label>
+          </div>
+
+          <div class="skill fade-up">
+            <div class="progress" id="p-cyber"></div>
+            <label>Cyber Security</label>
+          </div>
+
+          <div class="skill fade-up">
+            <div class="progress" id="p-office"></div>
+            <label>MS Office (Excel, SQL)</label>
+          </div>
+
+            <div class="skill fade-up">
+            <div class="progress" id="p-Pro"></div>
+            <label>Programming (C++, Python)</label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card fade-up">
+        <h4 style="margin-top:0; font-weight:800; color:transparent;
+            background: var(--accent-gradient);
+            -webkit-background-clip:text; background-clip:text;">Skill Details</h4>
+        <p class="muted" style="line-height:1.6; margin:0;">
+          Web development: responsive UIs, accessible markup, and JavaScript-driven interactions. Cyber Security: assessments, secure configuration, authentication best practices, and mitigation guidance. AI: model integration for predictions and automation. MS Office: advanced Excel and SQL for data handling and reports.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-title fade-up"><h2>Services</h2><div class="muted">How I can help</div></div>
+    <div class="services"> 
+      <div class="service fade-up">
+        <div style="font-size:24px; color:var(--blue-400)">🌐</div>
+        <div>
+          <div style="font-weight:700">Web Design & Development</div>
+
+          <div class="muted">Responsive sites, SPA interfaces, performance & accessibility.</div>
+        </div>
+      </div>
+      <div class="service fade-up">
+        <div style="font-size:24px; color:var(--blue-600)">🔒</div>
+        <div>
+          <div style="font-weight:700">Cybersecurity Services</div>
+          <div class="muted">Security assessments, mitigation, secure architecture & implementation.</div>
+        </div>
+      </div>
+      <div class="service fade-up">
+        <div style="font-size:24px; color:var(--blue-400)">🤖</div>
+        <div>
+          <div style="font-weight:700">AI Integration</div>
+          <div class="muted">Model-driven features, automations, and analytics integration.</div>
+        </div>
+      </div>
+      <div class="service fade-up">
+        <div style="font-size:24px; color:var(--blue-600)">📊</div>
+        <div>
+          <div style="font-weight:700">Office Productivity</div>
+          <div class="muted">Advanced Excel, SQL databases, dashboards & reporting.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-title fade-up"><h2>Projects</h2><div class="muted">Selected work</div></div>
+    <div class="card fade-up project">
+      <div class="project-thumb fade-up" title="Unit Converter">
+        <svg width="280" height="160" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1e2c45"/><stop offset="1" stop-color="#162030"/></linearGradient></defs>
+          <rect width="280" height="160" rx="12" fill="url(#g)"/>
+          <text x="50%" y="50%" fill="#3aa0ff" text-anchor="middle" font-family="Inter, Poppins" font-size="14" dy=".35em">Unit Converter</text>
+        </svg>
+      </div>
+
+      <div class="fade-up">
+        <h3 style="margin:0 0 8px 0">Unit Converter</h3>
+        <p class="muted" style="margin:0 0 8px 0; line-height:1.6;">A responsive unit converter supporting length, weight, temperature and more. Built with modern HTML/CSS/JS for fast usability.</p>
+        <div style="display:flex; gap:10px; margin-top:8px; flex-wrap:wrap;">
+          <a class="btn view" href="https://rsattiunitconverter.netlify.app" target="_blank">View Project</a>
+
+          <a class="btn download" href="project.png" >Download Image</a>
+          <a class="btn primary" href="#" onclick="alert('Source code is not available!');return false;">Source Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title fade-up"><h2>Contact</h2><div class="muted">Reach out</div></div>
+    <div class="two"> 
+      <div class="card fade-up">
+        <ul class="contact-list">
+          <li><strong>Phone:</strong>&nbsp;<a href="tel:+923000000000"></a>+923409863884</li>
+          <li><strong>WhatsApp:</strong>&nbsp;<a href="https://wa.me/+923110897655" target="_blank">+923110897655</a></li>
+          <li><strong>Email:</strong>&nbsp;<a href="mailto:rsatti718@gmail.com">rsatti718.com</a></li>
+          <li><strong>Address:</strong>&nbsp;<span class="muted">Wah Cantt, Rawalpindi, Pakistan</span></li>
+        </ul>
+      </div>
+
+      <div class="card fade-up">
+
+        <h4 style="margin-top:0; font-weight:800; color:transparent;
+            background: var(--accent-gradient);
+            -webkit-background-clip:text; background-clip:text;">Get in Touch</h4>
+        <p class="muted" style="line-height:1.6; margin:0;">
+          I'm available for work and collaborations. Feel free to reach out through any of the contact methods listed.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+    <div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div class="logo" style="width:44px;height:44px">RS</div>
+          <div>
+            <div style="font-weight:700; color:#dbefff;">Rehan Satti</div>
+            <div style="color:#dbefff; opacity:0.75;">Web Developer · Cyber Security Expert · AI Specialist</div>
+          </div>
+        </div>
+    </div>
+
+    <div style="text-align:right;">
+      <div class="socials" style="display:flex; gap:12px; font-size:1.4rem;">
+        <a href="#" onclick="alert('Social placeholder');return 
+
+false" style="color:#dbefff;"><i class="fab fa-linkedin"></i></a>
+        <a href="#" onclick="alert('Social placeholder');return false" style="color:#dbefff;"><i class="fab fa-github"></i></a>
+        <a href="#" onclick="alert('Social placeholder');return false" style="color:#dbefff;"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div style="margin-top:8px; color:#dbefff; opacity:0.75;">© 2025 Rehan Satti</div>
+    </div>
+</footer>
+
+<script>
+/* ---------------------------
+   Helper UI (mobile menu, search, asset handling)
+   --------------------------- */
+function openMobileMenu(){ document.getElementById('mobileMenu').style.display='block'; }
+function closeMobileMenu(){ document.getElementById('mobileMenu').style.display='none'; }
+
+function doSearch(e){
+  if(e) e.preventDefault();
+  const q = (document.getElementById('searchInput').value||'').trim().toLowerCase();
+  if(!q) return false;
+  const ids = ['home','about','education','skills','services','certificates','projects','contact'];
+  const found = ids.find(id => id.includes(q) || id===q);
+  if(found){
+    const el = document.getElementById(found);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  } else {
+    alert('No matching section found — try: about, skills, projects, contact.');
+  }
+  return false;
+}
+
+/* smooth anchor offset for fixed header */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(!href || href === '#') return;
+    if(href.startsWith('#')){
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if(el){
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 92;
+        window.scrollTo({top:y, behavior:'smooth'});
+      }
+    }
+  });
+});
+
+/* open certificate pdfs/files */
+function openAsset(filename){
+
+  try{
+    const win = window.open(filename, '_blank');
+    if(!win) alert('Popup blocked. Please ensure files like Pro.jpg, Web.pdf, etc., are in the same folder.');
+  } catch(err){
+    alert('Could not open file: ' + filename + '. Please ensure the file exists.');
+  }
+}
+
+/* function to download certificate assets */
+function downloadAsset(filename){
+  try{
+    const a = document.createElement('a');
+    a.href = filename;
+    a.download = filename; 
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } catch(err){
+    alert('Could not initiate download for: ' + filename);
+  }
+}
+
+/* ---------------------------
+   Typing effect
+   --------------------------- */
+const typingEl = document.getElementById('typing');
+const phrases = ["Web Developer", "Cyber Security Expert", "AI Specialist"];
+let tIndex=0, cIndex=0, deleting=false;
+
+function typeLoop(){
+  const current = phrases[tIndex];
+  if(!deleting){
+    cIndex++;
+    if(cIndex > current.length){
+      deleting=true;
+      setTimeout(typeLoop,900);
+      return;
+    }
+  } else {
+    cIndex--;
+    if(cIndex < 0){
+      deleting=false;
+      tIndex = (tIndex+1) % phrases.length;
+      setTimeout(typeLoop,250);
+      return;
+    }
+  }
+  typingEl.textContent = current.substring(0,cIndex) + (cIndex%2 ? '|' : '');
+  setTimeout(typeLoop, deleting ? 60 : 120);
+}
+setTimeout(typeLoop, 400);
+
+/* ---------------------------
+   Per-card scroll reveal using IntersectionObserver 
+   --------------------------- */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold: 0.18});
+
+document.querySelectorAll('.fade-up').forEach(el=>{
+  if(!el.closest('.hero')) {
+    revealObserver.observe(el);
+  }
+});
+
+
+/* ---------------------------
+   Circular progress animation 
+   --------------------------- */
+const progressConfig = {
+  'p-web': 70,
+  'p-ai': 85,
+  'p-cyber': 75,
+  'p-office': 95,
+  'p-Pro' : 65
+};
+Object.keys(progressConfig).forEach(id=>{
+  const el = document.getElementById(id);
+  if(!el) return;
+  const inner = document.createElement('div'); inner.className='inner'; inner.textContent='0%';
+  el.appendChild(inner);
+  const p = progressConfig[id];
+  const io = new IntersectionObserver((entries, ob)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        let cur = 0;
+
+        const step = Math.max(1, Math.round(p/30));
+        const int = setInterval(()=>{
+          cur += step;
+          if(cur >= p){ cur = p; clearInterval(int); }
+          // Animate conic-gradient
+          el.style.background = `conic-gradient(${getComputedStyle(document.documentElement).getPropertyValue('--blue-600').trim()} ${cur*3.6}deg, rgba(255,255,255,0.08) ${cur*3.6}deg)`;
+          inner.textContent = cur + '%';
+        }, 18);
+        ob.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.25});
+  io.observe(el);
+});
+
+/* ---------------------------
+   Particle background
+   --------------------------- */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = innerWidth;
+let h = canvas.height = innerHeight;
+window.addEventListener('resize', ()=>{ w = canvas.width = innerWidth; h = canvas.height = innerHeight; initParticles(); });
+
+let particles = [];
+function rand(min,max){ return Math.random()*(max-min)
+
++min; }
+function Particle(){
+  this.x = rand(0,w);
+  this.y = rand(0,h);
+  this.vx = rand(-0.6,0.6); 
+  this.vy = rand(-0.6,0.6); 
+  this.r = rand(1.0, 3.0); 
+  this.h = rand(200, 225);
+  this.alpha = rand(0.4, 0.9); 
+}
+Particle.prototype.update = function(){
+  this.x += this.vx; this.y += this.vy;
+  if(this.x < -20) this.x = w + 20;
+  if(this.x > w + 20) this.x = -20;
+  if(this.y < -20) this.y = h + 20;
+  if(this.y > h + 20) this.y = -20;
+};
+Particle.prototype.draw = function(){
+  const grd = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r*10); 
+  const c1 = `hsla(${this.h},80%,65%,${this.alpha*0.9})`; 
+  const c2 = `hsla(${(this.h+40)%360},60%,85%,0.04)`; 
+  grd.addColorStop(0,c1);
+  grd.addColorStop(1,c2);
+  ctx.fillStyle = grd;
+  ctx.beginPath(); ctx.arc(this.x,this.y,this.r*5,0,Math.PI*2); ctx.fill(); 
+};
+
+function initParticles(){
+  particles = [];
+  const base = Math.floor((w*h)/35000);
+
+  const count = Math.min(250, Math.max(70, base));
+  for(let i=0;i<count;i++) particles.push(new Particle());
+}
+function connect(){
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const a = particles[i], b = particles[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      if(d < 140){ 
+        ctx.beginPath();
+        ctx.moveTo(a.x,a.y);
+        ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle = 'rgba(11,102,204,' + (0.1 - (d/140)*0.08) + ')'; 
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+  }
+}
+function anim(){
+  ctx.clearRect(0,0,w,h);
+  for(let p of particles){ p.update(); p.draw(); }
+  connect();
+  requestAnimationFrame(anim);
+}
+initParticles(); anim();
+
+/* Initial reveal for hero & buttons */
+window.addEventListener('load', ()=>{
+
+  document.querySelectorAll('#heroTitle, #typing, .hero-ctas').forEach((el,i)=>{ setTimeout(()=>el.classList.add('show'), 90*i); });
+});
+
+</script>
+</body>
+</html>
