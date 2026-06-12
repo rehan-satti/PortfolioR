@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehan Mufaz - Portfolio</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS for contact form email delivery -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="#home" class="brand">
+                <span class="logo">RM</span>
+                <span class="name">Rehan Mufaz</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu glass">
+        <div class="menu-close"><i class="fas fa-times"></i></div>
+        <ul class="mobile-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content" data-animate="fade-up">
+                <h2 class="greeting">Hello, I'm</h2>
+                <h1 class="title">Rehan Mufaz</h1>
+                <div class="typing-container">
+                    <span class="typing-prefix">I am a</span>
+                    <span class="typing-text"></span><span class="cursor">|</span>
+                </div>
+                <p class="description">
+                    A motivated and analytical Computer Science student building robust and responsive web applications. I focus on writing clean, maintainable code to create reliable solutions.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        View Projects <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="Resume.pdf" class="btn btn-outline" download>
+                        Download CV <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual" data-animate="fade-left">
+                <div class="image-wrapper orbit-wrapper">
+                    <img src="profile.png" alt="Rehan Mufaz">
+                    <div class="orbit-badge badge-1"><i class="fab fa-html5"></i></div>
+                    <div class="orbit-badge badge-2"><i class="fab fa-css3-alt"></i></div>
+                    <div class="orbit-badge badge-3"><i class="fab fa-js"></i></div>
+                    <div class="orbit-badge badge-4"><i class="fab fa-python"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Education Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card glass-card" data-animate="fade-right">
+                    <h3>My Journey</h3>
+                    <p>I am a Computer Science student with a strong interest in Software Development and Web Technologies. I seek opportunities to apply academic knowledge, enhance technical and problem-solving skills, and gain practical industry experience.</p>
+                    <p>I enjoy working in collaborative environments where I can continuously learn and adapt to emerging technologies, without acting as if I know everything, but with a solid foundation to build upon.</p>
+                    <div class="contact-info-list">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Wah Cantt, Taxila, Pakistan</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>rsatti718@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>03409863884</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline" data-animate="fade-left">
+                    <h3>Education</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 - 2028 (Expected)</div>
+                        <div class="timeline-content glass-card">
+                            <h4>BS in Computer Science</h4>
+                            <p>National University of Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 - 2024</div>
+                        <div class="timeline-content glass-card">
+                            <h4>Higher Secondary School Certificate</h4>
+                            <p>Wah College of Accountancy Wah Cantt</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020 - 2022</div>
+                        <div class="timeline-content glass-card">
+                            <h4>Secondary School Certificate</h4>
+                            <p>Govt Boys High School Dhirkot Sattian Murree</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         SKILLS & EXPERTISE SECTION
+         ========================================================= -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Skills &amp; Expertise</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Intermediate proficiency across core web, backend, and network technologies for practical development work.</p>
+            </div>
+
+            <div class="skills-2x2-grid">
+
+                <!-- Card 1: Frontend Development -->
+                <div class="sk-card glass-card" data-animate="fade-up" data-delay="100">
+                    <div class="sk-card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="sk-card-body">
+                        <h3>Frontend Development</h3>
+                        <p>Responsive, accessible, and performant interfaces using modern web standards.</p>
+                        <div class="skill-pills">
+                            <span class="skill-pill"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="skill-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="skill-pill"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="skill-pill"><i class="fas fa-wind"></i> Tailwind CSS</span>
+                            <span class="skill-pill"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Programming Languages -->
+                <div class="sk-card glass-card" data-animate="fade-up" data-delay="200">
+                    <div class="sk-card-icon sk-icon-purple">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="sk-card-body">
+                        <h3>Programming Languages</h3>
+                        <p>Solid programming foundation for algorithmic problem solving and scripting.</p>
+                        <div class="skill-pills">
+                            <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
+                            <span class="skill-pill"><i class="fas fa-code"></i> C++</span>
+                            <span class="skill-pill"><i class="fab fa-js"></i> JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Database & Backend -->
+                <div class="sk-card glass-card" data-animate="fade-up" data-delay="300">
+                    <div class="sk-card-icon sk-icon-green">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="sk-card-body">
+                        <h3>Database &amp; Backend</h3>
+                        <p>Data management and server-side logic for robust applications.</p>
+                        <div class="skill-pills">
+                            <span class="skill-pill"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="skill-pill"><i class="fas fa-server"></i> SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: UI/UX & Design Systems -->
+                <div class="sk-card glass-card" data-animate="fade-up" data-delay="400">
+                    <div class="sk-card-icon sk-icon-pink">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="sk-card-body">
+                        <h3>UI/UX &amp; Design Systems</h3>
+                        <p>Clean, modern interfaces built with user-first thinking and design system principles.</p>
+                        <div class="skill-pills">
+                            <span class="skill-pill"><i class="fas fa-pencil-ruler"></i> UI Design</span>
+                            <span class="skill-pill"><i class="fas fa-th"></i> Responsive Layouts</span>
+                            <span class="skill-pill"><i class="fas fa-layer-group"></i> Design Systems</span>
+                            <span class="skill-pill"><i class="fas fa-drafting-compass"></i> Wireframing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Tools & Workflow -->
+                <div class="sk-card glass-card" data-animate="fade-up" data-delay="500">
+                    <div class="sk-card-icon sk-icon-orange">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="sk-card-body">
+                        <h3>Tools &amp; Workflow</h3>
+                        <p>Efficient development environment using industry-standard tools and version control.</p>
+                        <div class="skill-pills">
+                            <span class="skill-pill"><i class="fab fa-git-alt"></i> Git</span>
+                            <span class="skill-pill"><i class="fas fa-file-code"></i> VS Code</span>
+                            <span class="skill-pill"><i class="fab fa-wordpress"></i> WordPress</span>
+                            <span class="skill-pill"><i class="fab fa-microsoft"></i> MS Office</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Networking & Infrastructure -->
+                <div class="sk-card glass-card" data-animate="fade-up" data-delay="600">
+                    <div class="sk-card-icon sk-icon-teal">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="sk-card-body">
+                        <h3>Networking &amp; Infrastructure</h3>
+                        <p>Fundamentals of network design, infrastructure support, and practical troubleshooting for reliable systems.</p>
+                        <div class="skill-pills">
+                            <span class="skill-pill"><i class="fas fa-network-wired"></i> TCP/IP</span>
+                            <span class="skill-pill"><i class="fas fa-wifi"></i> LAN/WAN</span>
+                            <span class="skill-pill"><i class="fas fa-project-diagram"></i> Packet Tracer</span>
+                            <span class="skill-pill"><i class="fas fa-tools"></i> Infrastructure Support</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         CERTIFICATIONS & ACHIEVEMENTS SECTION
+         ========================================================= -->
+    <section id="certifications" class="section cert-section bg-alt">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Certifications &amp; Achievements</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Professional certifications and continuous learning achievements.</p>
+            </div>
+
+            <div class="cert-cards-grid">
+
+                <!-- Featured: Web Dev NAVTTC -->
+                <div class="cert-card glass-card cert-featured" data-animate="fade-up" data-delay="100">
+                    <div class="cert-featured-badge">⭐ Featured</div>
+                    <div class="cert-icon-wrap cert-icon-blue">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>Web Development Certificate</h3>
+                        <span class="cert-issuer-badge"><i class="fas fa-building"></i> NAVTTC</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="certmage.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- React Basics — Meta -->
+                <div class="cert-card glass-card" data-animate="fade-up" data-delay="150">
+                    <div class="cert-icon-wrap cert-icon-cyan">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>React Basics</h3>
+                        <span class="cert-issuer-badge"><i class="fab fa-meta"></i> Meta</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="react.pdf" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- WordPress — DigiSkills -->
+                <div class="cert-card glass-card" data-animate="fade-up" data-delay="200">
+                    <div class="cert-icon-wrap cert-icon-blue">
+                        <i class="fab fa-wordpress"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>WordPress</h3>
+                        <span class="cert-issuer-badge"><i class="fas fa-graduation-cap"></i> DigiSkills</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="wordpress.pdf" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- AI for Everyone — DeepLearning.AI -->
+                <div class="cert-card glass-card" data-animate="fade-up" data-delay="250">
+                    <div class="cert-icon-wrap cert-icon-purple">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>AI For Everyone</h3>
+                        <span class="cert-issuer-badge"><i class="fas fa-robot"></i> DeepLearning.AI</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="ai.pdf" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cybersecurity Foundations — Google -->
+                <div class="cert-card glass-card" data-animate="fade-up" data-delay="300">
+                    <div class="cert-icon-wrap cert-icon-green">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>Cybersecurity Foundations</h3>
+                        <span class="cert-issuer-badge"><i class="fab fa-google"></i> Google</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="cybersecurity.pdf" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Python Programming — Meta -->
+                <div class="cert-card glass-card" data-animate="fade-up" data-delay="350">
+                    <div class="cert-icon-wrap cert-icon-yellow">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>Python Programming</h3>
+                        <span class="cert-issuer-badge"><i class="fab fa-meta"></i> Meta</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="python.pdf" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Networking Learn-A-Thon — Cisco -->
+                <div class="cert-card glass-card" data-animate="fade-up" data-delay="400">
+                    <div class="cert-icon-wrap cert-icon-orange">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="cert-body">
+                        <h3>Networking Learn-A-Thon 2026</h3>
+                        <span class="cert-issuer-badge"><i class="fas fa-award"></i> Cisco</span>
+                        <span class="cert-status-badge cert-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                    </div>
+                    <a href="network.png" target="_blank" class="cert-view-btn">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">What I Do</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card glass-card" data-animate="fade-up" data-delay="100">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Website Developer</h3>
+                    <p>Building responsive, accessible, and fast web applications using modern technologies like HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="service-card glass-card" data-animate="fade-up" data-delay="200">
+                    <div class="service-icon"><i class="fab fa-wordpress"></i></div>
+                    <h3>WordPress</h3>
+                    <p>Creating customized and easily manageable WordPress websites, adapting themes, and integrating essential plugins for business needs.</p>
+                </div>
+                <div class="service-card glass-card" data-animate="fade-up" data-delay="300">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Office Productivity</h3>
+                    <p>Leveraging Microsoft Office tools (Excel, Access, Word) and databases (SQL) for efficient data management, reporting, and workflow optimization.</p>
+                </div>
+                <div class="service-card glass-card" data-animate="fade-up" data-delay="400">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Deployment &amp; Support</h3>
+                    <p>Deploying projects with reliable hosting and ongoing support to keep applications stable and accessible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-alt">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card" data-animate="fade-up">
+                    <div class="project-img-placeholder">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>OmniConvert</h3>
+                        <p>A responsive web-based utility engine featuring optimized algorithms for real-time computational unit conversion across multi-device viewports.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>Vanilla JS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rehan-satti.github.io/OmniConvert/" target="_blank" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card" data-animate="fade-up" data-delay="100">
+                    <div class="project-img-placeholder">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>SkyCast</h3>
+                        <p>A modern weather forecasting application providing real-time weather data and engaging visual interfaces for a seamless user experience.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rehan-satti.github.io/SkyCast/" target="_blank" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card" data-animate="fade-up" data-delay="200">
+                    <div class="project-img-placeholder">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Bank Management System</h3>
+                        <p>A secure web-based Banking Management System implementing role-based access control (admin, manager, customer). Features include authentication, fund transfers, transaction processing, and ACID-compliant data handling.</p>
+                        <div class="project-tech">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>React</span>
+                            <span>Tailwind</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="btn btn-sm btn-outline"><i class="fas fa-server"></i> Localhost</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info glass-card" data-animate="fade-right">
+                    <h3>Contact Information</h3>
+                    <p>Always open to discussing web development projects and internship opportunities. Feel free to reach out using the form or the details below.</p>
+                    
+                    <div class="contact-info-list" style="margin-top: 2rem;">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Wah Cantt, Taxila, Pakistan</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>rsatti718@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>03409863884</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/923110897655" target="_blank" style="color:inherit">+92 311 0897655</a>
+                        </div>
+                    </div>
+
+                    <div class="social-links" style="margin-top: 2rem; gap: 1rem;">
+                        <a href="https://github.com/rehan-satti" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/rehan-satti-67a538343?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:rsatti718@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container glass-card" data-animate="fade-left">
+                    <h3 style="margin-bottom:1.5rem;">Send a Message</h3>
+                    <div id="form-success" class="form-success-msg" style="display:none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thank you! Your message was sent successfully. I'll get back to you soon.</p>
+                    </div>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment-dots"></i> Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="How can I help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full" id="submitBtn">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer glass">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2>Rehan Mufaz</h2>
+                <p>Computer Science Student & Web Developer</p>
+                <div class="social-links" style="margin-top: 1rem;">
+                    <a href="https://github.com/rehan-satti" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rehan-satti-67a538343?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:rsatti718@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rehan Mufaz. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
