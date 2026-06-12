@@ -113,10 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       Contact Form - EmailJS Integration
-       Form data is emailed to rsatti718@gmail.com via EmailJS (free service).
-       Setup: https://www.emailjs.com — sign up, create a service, template, and
-       replace SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY below with your own values.
+       Contact Form - Web3Forms Integration
+       Form data is emailed to rsatti718@gmail.com via Web3Forms (free service).
+       Setup: https://web3forms.com — sign up to get an access key, and replace
+       'YOUR_ACCESS_KEY_HERE' below with your real key.
        ========================================================================== */
     const contactForm = document.getElementById('contactForm');
     const successMsg  = document.getElementById('form-success');
@@ -132,22 +132,47 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
             submitBtn.disabled  = true;
 
+            const accessKey = 'e16c6b2d-d21f-4174-846a-d70cb2ed92a4';
+
             const params = {
-                from_name : document.getElementById('name').value.trim(),
-                from_email: document.getElementById('email').value.trim(),
-                subject   : document.getElementById('subject').value.trim(),
-                message   : document.getElementById('message').value.trim(),
+                name   : document.getElementById('name').value.trim(),
+                email  : document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim(),
             };
 
-            // ---- EmailJS send ----
-            // Replace the three strings below with your real IDs from emailjs.com
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params, 'YOUR_PUBLIC_KEY')
-                .then(() => {
+            if (accessKey === 'YOUR_ACCESS_KEY_HERE') {
+                // Mock success for local testing/preview if key is placeholder
+                console.log('Form submission (Local Testing Mode - Web3Forms key not configured):', params);
+                setTimeout(() => {
                     contactForm.reset();
                     contactForm.style.display = 'none';
                     if (successMsg) successMsg.style.display = 'flex';
+                }, 1000);
+            } else {
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: accessKey,
+                        ...params
+                    })
                 })
-                .catch(() => {
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        contactForm.reset();
+                        contactForm.style.display = 'none';
+                        if (successMsg) successMsg.style.display = 'flex';
+                    } else {
+                        throw new Error(data.message || 'Submission failed');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Submission error:', error);
                     submitBtn.innerHTML = origHTML;
                     submitBtn.disabled  = false;
                     // Show inline error without alert
@@ -157,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     contactForm.prepend(errEl);
                     setTimeout(() => errEl.remove(), 6000);
                 });
+            }
         });
     }
 });
